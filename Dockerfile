@@ -106,10 +106,8 @@ RUN mkdir ${USERHOME}/Nominatim/build && \
 
 # Download data for initial import
 USER nominatim
-ARG PBF_URL=https://planet.osm.org/pbf/planet-latest.osm.pbf
-#RUN curl -L ${PBF_URL} --create-dirs -o /srv/nominatim/src/data.osm.pbf
-RUN mkdir -p /srv/nominatim/src/
-COPY planet-latest.osm.pbf /srv/nominatim/src/
+ARG PBF_URL=https://ftp.osuosl.org/pub/openstreetmap/pbf/planet-latest.osm.pbf
+RUN curl -L ${PBF_URL} --create-dirs -o /srv/nominatim/src/data.osm.pbf
 
 # Filter administrative boundaries
 USER nominatim
